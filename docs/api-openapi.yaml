@@ -1,0 +1,2010 @@
+openapi: 3.0.3
+info:
+  title: Passione Restaurant API
+  description: REST API для системы управления ресторанами Passione
+  version: 1.0.0
+  contact:
+    name: Passione Development Team
+
+servers:
+  - url: http://localhost:3000/api
+    description: Development server
+  - url: https://api.passione.example.com/api
+    description: Production server
+
+tags:
+  - name: Auth
+    description: Аутентификация и авторизация
+  - name: Restaurants
+    description: Управление ресторанами
+  - name: Menus
+    description: Управление меню
+  - name: Categories
+    description: Управление категориями блюд
+  - name: Dishes
+    description: Управление блюдами
+  - name: Tables
+    description: Управление столиками
+  - name: Sessions
+    description: Сессии посетителей
+  - name: Carts
+    description: Корзины посетителей
+  - name: Orders
+    description: Заказы
+  - name: Notifications
+    description: Уведомления
+  - name: Users
+    description: Управление пользователями
+  - name: Analytics
+    description: Аналитика
+
+paths:
+  # ============================================
+  # Аутентификация
+  # ============================================
+  /auth/login:
+    post:
+      tags: [Auth]
+      summary: Вход в систему
+      description: Аутентификация пользователя (сотрудника или администратора)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password]
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+                  format: password
+      responses:
+        '200':
+          description: Успешная аутентификация
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /auth/logout:
+    post:
+      tags: [Auth]
+      summary: Выход из системы
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Успешный выход
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /auth/me:
+    get:
+      tags: [Auth]
+      summary: Получить информацию о текущем пользователе
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Информация о пользователе
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  # ============================================
+  # Рестораны
+  # ============================================
+  /restaurants/{restaurantId}/menu:
+    get:
+      tags: [Menus]
+      summary: Получить меню ресторана
+      description: Получить меню ресторана с указанным языком (для посетителей)
+      parameters:
+        - $ref: '#/components/parameters/RestaurantId'
+        - $ref: '#/components/parameters/Language'
+      responses:
+        '200':
+          description: Меню ресторана
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MenuWithCategories'
+
+  # ============================================
+  # Категории
+  # ============================================
+  /categories:
+    get:
+      tags: [Categories]
+      summary: Получить список категорий
+      parameters:
+        - name: menuId
+          in: query
+          schema:
+            type: string
+            format: uuid
+        - $ref: '#/components/parameters/Language'
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: Список категорий
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Category'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+    post:
+      tags: [Categories]
+      summary: Создать категорию
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryCreate'
+      responses:
+        '201':
+          description: Категория создана
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+  /categories/{categoryId}:
+    get:
+      tags: [Categories]
+      summary: Получить категорию по ID
+      parameters:
+        - $ref: '#/components/parameters/CategoryId'
+        - $ref: '#/components/parameters/Language'
+      responses:
+        '200':
+          description: Категория
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      tags: [Categories]
+      summary: Обновить категорию
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/CategoryId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryUpdate'
+      responses:
+        '200':
+          description: Категория обновлена
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      tags: [Categories]
+      summary: Удалить категорию
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/CategoryId'
+      responses:
+        '204':
+          description: Категория удалена
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  # ============================================
+  # Блюда
+  # ============================================
+  /dishes:
+    get:
+      tags: [Dishes]
+      summary: Получить список блюд
+      parameters:
+        - name: categoryId
+          in: query
+          schema:
+            type: string
+            format: uuid
+        - $ref: '#/components/parameters/Language'
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: Список блюд
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Dish'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+    post:
+      tags: [Dishes]
+      summary: Создать блюдо
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DishCreate'
+      responses:
+        '201':
+          description: Блюдо создано
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dish'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+  /dishes/{dishId}:
+    get:
+      tags: [Dishes]
+      summary: Получить блюдо по ID
+      parameters:
+        - $ref: '#/components/parameters/DishId'
+        - $ref: '#/components/parameters/Language'
+      responses:
+        '200':
+          description: Блюдо
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dish'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      tags: [Dishes]
+      summary: Обновить блюдо
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/DishId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DishUpdate'
+      responses:
+        '200':
+          description: Блюдо обновлено
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dish'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      tags: [Dishes]
+      summary: Удалить блюдо
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/DishId'
+      responses:
+        '204':
+          description: Блюдо удалено
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /dishes/{dishId}/availability:
+    patch:
+      tags: [Dishes]
+      summary: Изменить доступность блюда
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/DishId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [is_available]
+              properties:
+                is_available:
+                  type: boolean
+      responses:
+        '200':
+          description: Доступность изменена
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dish'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  # ============================================
+  # Столики
+  # ============================================
+  /tables:
+    get:
+      tags: [Tables]
+      summary: Получить список столиков
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: restaurantId
+          in: query
+          schema:
+            type: string
+            format: uuid
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: Список столиков
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Table'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      tags: [Tables]
+      summary: Создать столик
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TableCreate'
+      responses:
+        '201':
+          description: Столик создан
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Table'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+  /tables/qr/{qrCode}:
+    get:
+      tags: [Tables]
+      summary: Получить информацию о столике по QR-коду
+      parameters:
+        - name: qrCode
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Информация о столике
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Table'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /tables/{tableId}:
+    get:
+      tags: [Tables]
+      summary: Получить столик по ID
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/TableId'
+      responses:
+        '200':
+          description: Столик
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Table'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      tags: [Tables]
+      summary: Обновить столик
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/TableId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TableUpdate'
+      responses:
+        '200':
+          description: Столик обновлён
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Table'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      tags: [Tables]
+      summary: Удалить столик
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/TableId'
+      responses:
+        '204':
+          description: Столик удалён
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  # ============================================
+  # Сессии
+  # ============================================
+  /sessions:
+    post:
+      tags: [Sessions]
+      summary: Создать сессию посетителя
+      description: Создание сессии при сканировании QR-кода столика
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [table_id, device_id]
+              properties:
+                table_id:
+                  type: string
+                  format: uuid
+                device_id:
+                  type: string
+                language:
+                  type: string
+                  enum: [ru, en]
+                  default: ru
+      responses:
+        '201':
+          description: Сессия создана
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Session'
+
+  /sessions/{sessionId}:
+    get:
+      tags: [Sessions]
+      summary: Получить сессию по ID
+      parameters:
+        - name: sessionId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Сессия
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Session'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  # ============================================
+  # Корзины
+  # ============================================
+  /carts/{sessionId}:
+    get:
+      tags: [Carts]
+      summary: Получить корзину по ID сессии
+      parameters:
+        - name: sessionId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Корзина
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /carts/{sessionId}/items:
+    post:
+      tags: [Carts]
+      summary: Добавить блюдо в корзину
+      parameters:
+        - name: sessionId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [dish_id, quantity]
+              properties:
+                dish_id:
+                  type: string
+                  format: uuid
+                quantity:
+                  type: integer
+                  minimum: 1
+                comment:
+                  type: string
+      responses:
+        '201':
+          description: Блюдо добавлено в корзину
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CartItem'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /cart-items/{itemId}:
+    get:
+      tags: [Carts]
+      summary: Получить позицию корзины
+      parameters:
+        - name: itemId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Позиция корзины
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CartItem'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      tags: [Carts]
+      summary: Обновить позицию в корзине
+      parameters:
+        - name: itemId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                quantity:
+                  type: integer
+                  minimum: 1
+                comment:
+                  type: string
+      responses:
+        '200':
+          description: Позиция обновлена
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CartItem'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      tags: [Carts]
+      summary: Удалить позицию из корзины
+      parameters:
+        - name: itemId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: Позиция удалена
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  # ============================================
+  # Заказы
+  # ============================================
+  /orders:
+    get:
+      tags: [Orders]
+      summary: Получить список заказов
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [PENDING, CONFIRMED, PREPARING, READY, DELIVERED, CANCELLED]
+        - name: tableNumber
+          in: query
+          schema:
+            type: string
+        - name: restaurantId
+          in: query
+          schema:
+            type: string
+            format: uuid
+        - name: dateFrom
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: dateTo
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: Список заказов
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Order'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      tags: [Orders]
+      summary: Создать заказ из корзины
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [session_id]
+              properties:
+                session_id:
+                  type: string
+                  format: uuid
+                comment:
+                  type: string
+      responses:
+        '201':
+          description: Заказ создан
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /orders/{orderId}:
+    get:
+      tags: [Orders]
+      summary: Получить заказ по ID
+      parameters:
+        - $ref: '#/components/parameters/OrderId'
+      responses:
+        '200':
+          description: Заказ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /orders/{orderId}/status:
+    get:
+      tags: [Orders]
+      summary: Получить статус заказа
+      parameters:
+        - $ref: '#/components/parameters/OrderId'
+      responses:
+        '200':
+          description: Статус заказа
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  order_id:
+                    type: string
+                    format: uuid
+                  status:
+                    type: string
+                    enum: [PENDING, CONFIRMED, PREPARING, READY, DELIVERED, CANCELLED]
+                  updated_at:
+                    type: string
+                    format: date-time
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      tags: [Orders]
+      summary: Изменить статус заказа
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/OrderId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [status]
+              properties:
+                status:
+                  type: string
+                  enum: [CONFIRMED, PREPARING, READY, DELIVERED, CANCELLED]
+      responses:
+        '200':
+          description: Статус изменён
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /orders/{orderId}/items:
+    get:
+      tags: [Orders]
+      summary: Получить позиции заказа
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/OrderId'
+      responses:
+        '200':
+          description: Позиции заказа
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/OrderItem'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /orders/history:
+    get:
+      tags: [Orders]
+      summary: Получить историю заказов по device_id
+      parameters:
+        - name: deviceId
+          in: query
+          required: true
+          schema:
+            type: string
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: История заказов
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Order'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+
+  /orders/{orderId}/repeat:
+    post:
+      tags: [Orders]
+      summary: Повторить заказ
+      parameters:
+        - $ref: '#/components/parameters/OrderId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [session_id]
+              properties:
+                session_id:
+                  type: string
+                  format: uuid
+      responses:
+        '201':
+          description: Заказ повторён (добавлен в корзину)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  # ============================================
+  # Уведомления
+  # ============================================
+  /notifications:
+    get:
+      tags: [Notifications]
+      summary: Получить уведомления
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: is_read
+          in: query
+          schema:
+            type: boolean
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: Список уведомлений
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Notification'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /notifications/{notificationId}/read:
+    patch:
+      tags: [Notifications]
+      summary: Отметить уведомление как прочитанное
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: notificationId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Уведомление отмечено как прочитанное
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Notification'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  # ============================================
+  # Пользователи
+  # ============================================
+  /users:
+    get:
+      tags: [Users]
+      summary: Получить список пользователей
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: restaurantId
+          in: query
+          schema:
+            type: string
+            format: uuid
+        - name: role
+          in: query
+          schema:
+            type: string
+            enum: [ADMIN, STAFF]
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: Список пользователей
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/User'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+    post:
+      tags: [Users]
+      summary: Создать пользователя
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCreate'
+      responses:
+        '201':
+          description: Пользователь создан
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+  /users/{userId}:
+    get:
+      tags: [Users]
+      summary: Получить пользователя по ID
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/UserId'
+      responses:
+        '200':
+          description: Пользователь
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      tags: [Users]
+      summary: Обновить пользователя
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/UserId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserUpdate'
+      responses:
+        '200':
+          description: Пользователь обновлён
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      tags: [Users]
+      summary: Удалить пользователя
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/UserId'
+      responses:
+        '204':
+          description: Пользователь удалён
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /users/{userId}/status:
+    patch:
+      tags: [Users]
+      summary: Изменить статус пользователя
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/UserId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [is_active]
+              properties:
+                is_active:
+                  type: boolean
+      responses:
+        '200':
+          description: Статус изменён
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  # ============================================
+  # Аналитика
+  # ============================================
+  /analytics/orders:
+    get:
+      tags: [Analytics]
+      summary: Получить аналитику по заказам
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: restaurantId
+          in: query
+          schema:
+            type: string
+            format: uuid
+        - name: dateFrom
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: dateTo
+          in: query
+          schema:
+            type: string
+            format: date-time
+      responses:
+        '200':
+          description: Аналитика по заказам
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_orders:
+                    type: integer
+                  total_revenue:
+                    type: number
+                    format: double
+                  average_order_value:
+                    type: number
+                    format: double
+                  orders_by_status:
+                    type: object
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+  /analytics/dishes:
+    get:
+      tags: [Analytics]
+      summary: Получить аналитику по блюдам
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: restaurantId
+          in: query
+          schema:
+            type: string
+            format: uuid
+        - name: dateFrom
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: dateTo
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 10
+      responses:
+        '200':
+          description: Аналитика по блюдам
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  popular_dishes:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        dish_id:
+                          type: string
+                          format: uuid
+                        dish_name:
+                          type: string
+                        orders_count:
+                          type: integer
+                        revenue:
+                          type: number
+                          format: double
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+  /analytics/revenue:
+    get:
+      tags: [Analytics]
+      summary: Получить аналитику по выручке
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: restaurantId
+          in: query
+          schema:
+            type: string
+            format: uuid
+        - name: dateFrom
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: dateTo
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: groupBy
+          in: query
+          schema:
+            type: string
+            enum: [day, week, month]
+            default: day
+      responses:
+        '200':
+          description: Аналитика по выручке
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  revenue_by_period:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        period:
+                          type: string
+                        revenue:
+                          type: number
+                          format: double
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+  /analytics/time:
+    get:
+      tags: [Analytics]
+      summary: Получить аналитику по времени обслуживания
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: restaurantId
+          in: query
+          schema:
+            type: string
+            format: uuid
+        - name: dateFrom
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: dateTo
+          in: query
+          schema:
+            type: string
+            format: date-time
+      responses:
+        '200':
+          description: Аналитика по времени обслуживания
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  average_preparation_time:
+                    type: number
+                    format: double
+                  average_order_time:
+                    type: number
+                    format: double
+                  orders_by_time_range:
+                    type: array
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+  /analytics/reports/export:
+    get:
+      tags: [Analytics]
+      summary: Экспортировать отчёт
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: format
+          in: query
+          required: true
+          schema:
+            type: string
+            enum: [excel, pdf]
+        - name: type
+          in: query
+          required: true
+          schema:
+            type: string
+            enum: [sales, orders, dishes, revenue]
+        - name: dateFrom
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: dateTo
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: restaurantId
+          in: query
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Файл отчёта
+          content:
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                type: string
+                format: binary
+            application/pdf:
+              schema:
+                type: string
+                format: binary
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  parameters:
+    RestaurantId:
+      name: restaurantId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    CategoryId:
+      name: categoryId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    DishId:
+      name: dishId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    TableId:
+      name: tableId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    OrderId:
+      name: orderId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    UserId:
+      name: userId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    Language:
+      name: lang
+      in: query
+      schema:
+        type: string
+        enum: [ru, en]
+        default: ru
+    Page:
+      name: page
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+    Limit:
+      name: limit
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 20
+
+  schemas:
+    AuthResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+        refresh_token:
+          type: string
+        user:
+          $ref: '#/components/schemas/User'
+
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        phone:
+          type: string
+        role:
+          type: string
+          enum: [ADMIN, STAFF]
+        restaurant_id:
+          type: string
+          format: uuid
+          nullable: true
+        is_active:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        last_login:
+          type: string
+          format: date-time
+          nullable: true
+
+    UserCreate:
+      type: object
+      required: [name, email, password, role]
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        phone:
+          type: string
+        password:
+          type: string
+          format: password
+        role:
+          type: string
+          enum: [ADMIN, STAFF]
+        restaurant_id:
+          type: string
+          format: uuid
+
+    UserUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        phone:
+          type: string
+        role:
+          type: string
+          enum: [ADMIN, STAFF]
+        restaurant_id:
+          type: string
+          format: uuid
+        is_active:
+          type: boolean
+
+    MenuWithCategories:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        description:
+          type: string
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category'
+
+    Category:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        menu_id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        name_en:
+          type: string
+        description:
+          type: string
+        sort_order:
+          type: integer
+        is_active:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    CategoryCreate:
+      type: object
+      required: [menu_id, name]
+      properties:
+        menu_id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        name_en:
+          type: string
+        description:
+          type: string
+        sort_order:
+          type: integer
+        is_active:
+          type: boolean
+
+    CategoryUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+        name_en:
+          type: string
+        description:
+          type: string
+        sort_order:
+          type: integer
+        is_active:
+          type: boolean
+
+    Dish:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        category_id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        name_en:
+          type: string
+        description:
+          type: string
+        description_en:
+          type: string
+        price:
+          type: number
+          format: double
+        image_url:
+          type: string
+        is_available:
+          type: boolean
+        allergens:
+          type: array
+          items:
+            type: string
+        is_vegetarian:
+          type: boolean
+        is_vegan:
+          type: boolean
+        preparation_time:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    DishCreate:
+      type: object
+      required: [category_id, name, price]
+      properties:
+        category_id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        name_en:
+          type: string
+        description:
+          type: string
+        description_en:
+          type: string
+        price:
+          type: number
+          format: double
+        image_url:
+          type: string
+        is_available:
+          type: boolean
+        allergens:
+          type: array
+          items:
+            type: string
+        is_vegetarian:
+          type: boolean
+        is_vegan:
+          type: boolean
+        preparation_time:
+          type: integer
+
+    DishUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+        name_en:
+          type: string
+        description:
+          type: string
+        description_en:
+          type: string
+        price:
+          type: number
+          format: double
+        image_url:
+          type: string
+        is_available:
+          type: boolean
+        allergens:
+          type: array
+          items:
+            type: string
+        is_vegetarian:
+          type: boolean
+        is_vegan:
+          type: boolean
+        preparation_time:
+          type: integer
+
+    Table:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        restaurant_id:
+          type: string
+          format: uuid
+        table_number:
+          type: string
+        qr_code:
+          type: string
+        capacity:
+          type: integer
+        is_active:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    TableCreate:
+      type: object
+      required: [restaurant_id, table_number]
+      properties:
+        restaurant_id:
+          type: string
+          format: uuid
+        table_number:
+          type: string
+        capacity:
+          type: integer
+        is_active:
+          type: boolean
+
+    TableUpdate:
+      type: object
+      properties:
+        table_number:
+          type: string
+        capacity:
+          type: integer
+        is_active:
+          type: boolean
+
+    Session:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        session_token:
+          type: string
+        table_id:
+          type: string
+          format: uuid
+        restaurant_id:
+          type: string
+          format: uuid
+        language:
+          type: string
+          enum: [ru, en]
+        device_id:
+          type: string
+        expires_at:
+          type: string
+          format: date-time
+        is_active:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    Cart:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        session_id:
+          type: string
+          format: uuid
+        total_amount:
+          type: number
+          format: double
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CartItem'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    CartItem:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        cart_id:
+          type: string
+          format: uuid
+        dish_id:
+          type: string
+          format: uuid
+        dish:
+          $ref: '#/components/schemas/Dish'
+        quantity:
+          type: integer
+        price:
+          type: number
+          format: double
+        comment:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    Order:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        restaurant_id:
+          type: string
+          format: uuid
+        table_id:
+          type: string
+          format: uuid
+        session_id:
+          type: string
+          format: uuid
+        table_number:
+          type: string
+        status:
+          type: string
+          enum: [PENDING, CONFIRMED, PREPARING, READY, DELIVERED, CANCELLED]
+        total_amount:
+          type: number
+          format: double
+        comment:
+          type: string
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderItem'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        completed_at:
+          type: string
+          format: date-time
+          nullable: true
+
+    OrderItem:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        order_id:
+          type: string
+          format: uuid
+        dish_id:
+          type: string
+          format: uuid
+        dish:
+          $ref: '#/components/schemas/Dish'
+        quantity:
+          type: integer
+        price:
+          type: number
+          format: double
+        comment:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+
+    Notification:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        user_id:
+          type: string
+          format: uuid
+        order_id:
+          type: string
+          format: uuid
+          nullable: true
+        type:
+          type: string
+          enum: [ORDER_NEW, ORDER_READY, ORDER_DELAYED, MENU_UPDATED]
+        title:
+          type: string
+        message:
+          type: string
+        is_read:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+        read_at:
+          type: string
+          format: date-time
+          nullable: true
+
+    Pagination:
+      type: object
+      properties:
+        page:
+          type: integer
+        limit:
+          type: integer
+        total:
+          type: integer
+        total_pages:
+          type: integer
+
+  responses:
+    BadRequest:
+      description: Неверный запрос
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+              message:
+                type: string
+
+    Unauthorized:
+      description: Требуется аутентификация
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+              message:
+                type: string
+
+    Forbidden:
+      description: Недостаточно прав доступа
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+              message:
+                type: string
+
+    NotFound:
+      description: Ресурс не найден
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+              message:
+                type: string
+

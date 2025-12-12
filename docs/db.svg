@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="1480px" preserveAspectRatio="none" style="width:1078px;height:1480px;background:#FFFFFF;" version="1.1" viewBox="0 0 1078 1480" width="1078px" zoomAndPan="magnify"><defs/><g><rect fill="#FFFFFF" height="26.2969" id="_title" style="stroke:none;stroke-width:1.0;" width="205" x="429.75" y="5"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="195" x="434.75" y="22.9951">ERD - Passione Database</text><!--MD5=[5de2a909f2667c08aeebba28bac3ecc7]
+class RES--><g id="elem_RES"><rect codeLine="7" fill="#F1F1F1" height="171.7188" id="RES" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="165" x="628" y="44.2969"/><ellipse cx="669.5" cy="59.2969" fill="#ADD1B2" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M671.9375,63.7969 L666.4844,63.7969 L666.4844,55.0469 L671.9375,55.0469 L671.9375,56.5781 L668.2188,56.5781 L668.2188,58.4531 L671.5781,58.4531 L671.5781,59.9844 L668.2188,59.9844 L668.2188,62.2656 L671.9375,62.2656 L671.9375,63.7969 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="74" x="688.5" y="63.4512">restaurants</text><line style="stroke:#181818;stroke-width:0.5;" x1="629" x2="792" y1="74.2969" y2="74.2969"/><ellipse cx="639" cy="86.7813" fill="#000000" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="82" x="647" y="89.4355">id : UUID [PK]</text><line style="stroke:#181818;stroke-width:1.0;" x1="629" x2="792" y1="96.2656" y2="96.2656"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="138" x="634" y="111.4043">name : VARCHAR(255)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="92" x="634" y="125.373">address : TEXT</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="135" x="634" y="139.3418">phone : VARCHAR(20)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="136" x="634" y="153.3105">email : VARCHAR(255)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="153" x="634" y="167.2793">qr_code : VARCHAR(100)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="122" x="634" y="181.248">is_active : BOOLEAN</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="149" x="634" y="195.2168">created_at : TIMESTAMP</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="153" x="634" y="209.1855">updated_at : TIMESTAMP</text></g><!--MD5=[6625b28f5e466d232cae20d055793b03]
+class MEN--><g id="elem_MEN"><rect codeLine="20" fill="#F1F1F1" height="143.7813" id="MEN" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="195" x="211" y="298.2969"/><ellipse cx="283.5" cy="313.2969" fill="#ADD1B2" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M285.9375,317.7969 L280.4844,317.7969 L280.4844,309.0469 L285.9375,309.0469 L285.9375,310.5781 L282.2188,310.5781 L282.2188,312.4531 L285.5781,312.4531 L285.5781,313.9844 L282.2188,313.9844 L282.2188,316.2656 L285.9375,316.2656 L285.9375,317.7969 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="42" x="302.5" y="317.4512">menus</text><line style="stroke:#181818;stroke-width:0.5;" x1="212" x2="405" y1="328.2969" y2="328.2969"/><ellipse cx="222" cy="340.7813" fill="#000000" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="82" x="230" y="343.4355">id : UUID [PK]</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="170" x="230" y="357.4043">** restaurant_id : UUID [FK]</text><line style="stroke:#181818;stroke-width:1.0;" x1="212" x2="405" y1="364.2344" y2="364.2344"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="138" x="217" y="379.373">name : VARCHAR(255)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="111" x="217" y="393.3418">description : TEXT</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="122" x="217" y="407.3105">is_active : BOOLEAN</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="149" x="217" y="421.2793">created_at : TIMESTAMP</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="153" x="217" y="435.248">updated_at : TIMESTAMP</text></g><!--MD5=[21f994f41f35e8dafe6befc6bd1211c3]
+class CAT--><g id="elem_CAT"><rect codeLine="31" fill="#F1F1F1" height="171.7188" id="CAT" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="172" x="144.5" y="716.2969"/><ellipse cx="193" cy="731.2969" fill="#ADD1B2" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M195.4375,735.7969 L189.9844,735.7969 L189.9844,727.0469 L195.4375,727.0469 L195.4375,728.5781 L191.7188,728.5781 L191.7188,730.4531 L195.0781,730.4531 L195.0781,731.9844 L191.7188,731.9844 L191.7188,734.2656 L195.4375,734.2656 L195.4375,735.7969 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="67" x="212" y="735.4512">categories</text><line style="stroke:#181818;stroke-width:0.5;" x1="145.5" x2="315.5" y1="746.2969" y2="746.2969"/><ellipse cx="155.5" cy="758.7813" fill="#000000" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="82" x="163.5" y="761.4355">id : UUID [PK]</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="138" x="163.5" y="775.4043">** menu_id : UUID [FK]</text><line style="stroke:#181818;stroke-width:1.0;" x1="145.5" x2="315.5" y1="782.2344" y2="782.2344"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="138" x="150.5" y="797.373">name : VARCHAR(255)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="160" x="150.5" y="811.3418">name_en : VARCHAR(255)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="111" x="150.5" y="825.3105">description : TEXT</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="129" x="150.5" y="839.2793">sort_order : INTEGER</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="122" x="150.5" y="853.248">is_active : BOOLEAN</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="149" x="150.5" y="867.2168">created_at : TIMESTAMP</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="153" x="150.5" y="881.1855">updated_at : TIMESTAMP</text></g><!--MD5=[952905b80e0d0667719b5c4e0366b183]
+class DIS--><g id="elem_DIS"><rect codeLine="44" fill="#F1F1F1" height="255.5313" id="DIS" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="183" x="7" y="970.2969"/><ellipse cx="74" cy="985.2969" fill="#ADD1B2" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M76.4375,989.7969 L70.9844,989.7969 L70.9844,981.0469 L76.4375,981.0469 L76.4375,982.5781 L72.7188,982.5781 L72.7188,984.4531 L76.0781,984.4531 L76.0781,985.9844 L72.7188,985.9844 L72.7188,988.2656 L76.4375,988.2656 L76.4375,989.7969 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="41" x="93" y="989.4512">dishes</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="189" y1="1000.2969" y2="1000.2969"/><ellipse cx="18" cy="1012.7813" fill="#000000" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="82" x="26" y="1015.4355">id : UUID [PK]</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="158" x="26" y="1029.4043">** category_id : UUID [FK]</text><line style="stroke:#181818;stroke-width:1.0;" x1="8" x2="189" y1="1036.2344" y2="1036.2344"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="138" x="13" y="1051.373">name : VARCHAR(255)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="160" x="13" y="1065.3418">name_en : VARCHAR(255)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="111" x="13" y="1079.3105">description : TEXT</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="133" x="13" y="1093.2793">description_en : TEXT</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="133" x="13" y="1107.248">price : DECIMAL(10,2)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="163" x="13" y="1121.2168">image_url : VARCHAR(500)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="140" x="13" y="1135.1855">is_available : BOOLEAN</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="99" x="13" y="1149.1543">allergens : JSON</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="152" x="13" y="1163.123">is_vegetarian : BOOLEAN</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="123" x="13" y="1177.0918">is_vegan : BOOLEAN</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="171" x="13" y="1191.0605">preparation_time : INTEGER</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="149" x="13" y="1205.0293">created_at : TIMESTAMP</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="153" x="13" y="1218.998">updated_at : TIMESTAMP</text></g><!--MD5=[154c2fac5f3350b4e656a65335037821]
+class TAB--><g id="elem_TAB"><rect codeLine="63" fill="#F1F1F1" height="157.75" id="TAB" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="195" x="445" y="291.2969"/><ellipse cx="519" cy="306.2969" fill="#ADD1B2" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M521.4375,310.7969 L515.9844,310.7969 L515.9844,302.0469 L521.4375,302.0469 L521.4375,303.5781 L517.7188,303.5781 L517.7188,305.4531 L521.0781,305.4531 L521.0781,306.9844 L517.7188,306.9844 L517.7188,309.2656 L521.4375,309.2656 L521.4375,310.7969 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="39" x="538" y="310.4512">tables</text><line style="stroke:#181818;stroke-width:0.5;" x1="446" x2="639" y1="321.2969" y2="321.2969"/><ellipse cx="456" cy="333.7813" fill="#000000" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="82" x="464" y="336.4355">id : UUID [PK]</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="170" x="464" y="350.4043">** restaurant_id : UUID [FK]</text><line style="stroke:#181818;stroke-width:1.0;" x1="446" x2="639" y1="357.2344" y2="357.2344"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="181" x="451" y="372.373">table_number : VARCHAR(10)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="153" x="451" y="386.3418">qr_code : VARCHAR(100)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="116" x="451" y="400.3105">capacity : INTEGER</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="122" x="451" y="414.2793">is_active : BOOLEAN</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="149" x="451" y="428.248">created_at : TIMESTAMP</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="153" x="451" y="442.2168">updated_at : TIMESTAMP</text></g><!--MD5=[cd682dce6bb52901b197b3ba7c050d9f]
+class USR--><g id="elem_USR"><rect codeLine="75" fill="#F1F1F1" height="199.6563" id="USR" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="212" x="859.5" y="479.2969"/><ellipse cx="944" cy="494.2969" fill="#ADD1B2" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M946.4375,498.7969 L940.9844,498.7969 L940.9844,490.0469 L946.4375,490.0469 L946.4375,491.5781 L942.7188,491.5781 L942.7188,493.4531 L946.0781,493.4531 L946.0781,494.9844 L942.7188,494.9844 L942.7188,497.2656 L946.4375,497.2656 L946.4375,498.7969 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="35" x="963" y="498.4512">users</text><line style="stroke:#181818;stroke-width:0.5;" x1="860.5" x2="1070.5" y1="509.2969" y2="509.2969"/><ellipse cx="870.5" cy="521.7813" fill="#000000" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="82" x="878.5" y="524.4355">id : UUID [PK]</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="170" x="878.5" y="538.4043">** restaurant_id : UUID [FK]</text><line style="stroke:#181818;stroke-width:1.0;" x1="860.5" x2="1070.5" y1="545.2344" y2="545.2344"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="138" x="865.5" y="560.373">name : VARCHAR(255)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="136" x="865.5" y="574.3418">email : VARCHAR(255)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="135" x="865.5" y="588.3105">phone : VARCHAR(20)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="200" x="865.5" y="602.2793">password_hash : VARCHAR(255)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="94" x="865.5" y="616.248">role : user_role</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="122" x="865.5" y="630.2168">is_active : BOOLEAN</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="149" x="865.5" y="644.1855">created_at : TIMESTAMP</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="153" x="865.5" y="658.1543">updated_at : TIMESTAMP</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="140" x="865.5" y="672.123">last_login : TIMESTAMP</text></g><!--MD5=[a983208db342c3a48d0c003ad9093b39]
+class VIS--><g id="elem_VIS"><rect codeLine="90" fill="#F1F1F1" height="185.6875" id="VIS" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="205" x="418" y="709.2969"/><ellipse cx="467.5" cy="724.2969" fill="#ADD1B2" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M469.9375,728.7969 L464.4844,728.7969 L464.4844,720.0469 L469.9375,720.0469 L469.9375,721.5781 L466.2188,721.5781 L466.2188,723.4531 L469.5781,723.4531 L469.5781,724.9844 L466.2188,724.9844 L466.2188,727.2656 L469.9375,727.2656 L469.9375,728.7969 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="98" x="486.5" y="728.4512">visitor_sessions</text><line style="stroke:#181818;stroke-width:0.5;" x1="419" x2="622" y1="739.2969" y2="739.2969"/><ellipse cx="429" cy="751.7813" fill="#000000" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="82" x="437" y="754.4355">id : UUID [PK]</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="135" x="437" y="768.4043">** table_id : UUID [FK]</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="170" x="437" y="782.373">** restaurant_id : UUID [FK]</text><line style="stroke:#181818;stroke-width:1.0;" x1="419" x2="622" y1="789.2031" y2="789.2031"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="193" x="424" y="804.3418">session_token : VARCHAR(255)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="146" x="424" y="818.3105">language : VARCHAR(2)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="160" x="424" y="832.2793">device_id : VARCHAR(255)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="145" x="424" y="846.248">expires_at : TIMESTAMP</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="122" x="424" y="860.2168">is_active : BOOLEAN</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="149" x="424" y="874.1855">created_at : TIMESTAMP</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="153" x="424" y="888.1543">updated_at : TIMESTAMP</text></g><!--MD5=[893fc527681307b17e6ceee68477d198]
+class ORD--><g id="elem_ORD"><rect codeLine="104" fill="#F1F1F1" height="199.6563" id="ORD" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="197" x="675" y="998.2969"/><ellipse cx="749" cy="1013.2969" fill="#ADD1B2" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M751.4375,1017.7969 L745.9844,1017.7969 L745.9844,1009.0469 L751.4375,1009.0469 L751.4375,1010.5781 L747.7188,1010.5781 L747.7188,1012.4531 L751.0781,1012.4531 L751.0781,1013.9844 L747.7188,1013.9844 L747.7188,1016.2656 L751.4375,1016.2656 L751.4375,1017.7969 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="41" x="768" y="1017.4512">orders</text><line style="stroke:#181818;stroke-width:0.5;" x1="676" x2="871" y1="1028.2969" y2="1028.2969"/><ellipse cx="686" cy="1040.7813" fill="#000000" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="82" x="694" y="1043.4355">id : UUID [PK]</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="170" x="694" y="1057.4043">** restaurant_id : UUID [FK]</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="135" x="694" y="1071.373">** table_id : UUID [FK]</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="151" x="694" y="1085.3418">** session_id : UUID [FK]</text><line style="stroke:#181818;stroke-width:1.0;" x1="676" x2="871" y1="1092.1719" y2="1092.1719"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="181" x="681" y="1107.3105">table_number : VARCHAR(10)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="132" x="681" y="1121.2793">status : order_status</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="185" x="681" y="1135.248">total_amount : DECIMAL(10,2)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="99" x="681" y="1149.2168">comment : TEXT</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="149" x="681" y="1163.1855">created_at : TIMESTAMP</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="153" x="681" y="1177.1543">updated_at : TIMESTAMP</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="166" x="681" y="1191.123">completed_at : TIMESTAMP</text></g><!--MD5=[46b5b238fc644ea126cef0f80ef52375]
+class OIT--><g id="elem_OIT"><rect codeLine="119" fill="#F1F1F1" height="143.7813" id="OIT" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="162" x="512.5" y="1315.2969"/><ellipse cx="552.6" cy="1330.2969" fill="#ADD1B2" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M555.0375,1334.7969 L549.5844,1334.7969 L549.5844,1326.0469 L555.0375,1326.0469 L555.0375,1327.5781 L551.3188,1327.5781 L551.3188,1329.4531 L554.6781,1329.4531 L554.6781,1330.9844 L551.3188,1330.9844 L551.3188,1333.2656 L555.0375,1333.2656 L555.0375,1334.7969 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="74" x="571.4" y="1334.4512">order_items</text><line style="stroke:#181818;stroke-width:0.5;" x1="513.5" x2="673.5" y1="1345.2969" y2="1345.2969"/><ellipse cx="523.5" cy="1357.7813" fill="#000000" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="82" x="531.5" y="1360.4355">id : UUID [PK]</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="137" x="531.5" y="1374.4043">** order_id : UUID [FK]</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="129" x="531.5" y="1388.373">** dish_id : UUID [FK]</text><line style="stroke:#181818;stroke-width:1.0;" x1="513.5" x2="673.5" y1="1395.2031" y2="1395.2031"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="115" x="518.5" y="1410.3418">quantity : INTEGER</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="133" x="518.5" y="1424.3105">price : DECIMAL(10,2)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="99" x="518.5" y="1438.2793">comment : TEXT</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="149" x="518.5" y="1452.248">created_at : TIMESTAMP</text></g><!--MD5=[32e23373235f0d091377578495b9f636]
+class CAR--><g id="elem_CAR"><rect codeLine="130" fill="#F1F1F1" height="115.8438" id="CAR" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="197" x="225" y="1040.2969"/><ellipse cx="303.5" cy="1055.2969" fill="#ADD1B2" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M305.9375,1059.7969 L300.4844,1059.7969 L300.4844,1051.0469 L305.9375,1051.0469 L305.9375,1052.5781 L302.2188,1052.5781 L302.2188,1054.4531 L305.5781,1054.4531 L305.5781,1055.9844 L302.2188,1055.9844 L302.2188,1058.2656 L305.9375,1058.2656 L305.9375,1059.7969 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="32" x="322.5" y="1059.4512">carts</text><line style="stroke:#181818;stroke-width:0.5;" x1="226" x2="421" y1="1070.2969" y2="1070.2969"/><ellipse cx="236" cy="1082.7813" fill="#000000" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="82" x="244" y="1085.4355">id : UUID [PK]</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="151" x="244" y="1099.4043">** session_id : UUID [FK]</text><line style="stroke:#181818;stroke-width:1.0;" x1="226" x2="421" y1="1106.2344" y2="1106.2344"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="185" x="231" y="1121.373">total_amount : DECIMAL(10,2)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="149" x="231" y="1135.3418">created_at : TIMESTAMP</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="153" x="231" y="1149.3105">updated_at : TIMESTAMP</text></g><!--MD5=[575735f769ad3c9d64c45dbe4d4ec55e]
+class CIT--><g id="elem_CIT"><rect codeLine="139" fill="#F1F1F1" height="157.75" id="CIT" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="165" x="128" y="1308.2969"/><ellipse cx="174" cy="1323.2969" fill="#ADD1B2" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M176.4375,1327.7969 L170.9844,1327.7969 L170.9844,1319.0469 L176.4375,1319.0469 L176.4375,1320.5781 L172.7188,1320.5781 L172.7188,1322.4531 L176.0781,1322.4531 L176.0781,1323.9844 L172.7188,1323.9844 L172.7188,1326.2656 L176.4375,1326.2656 L176.4375,1327.7969 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="65" x="193" y="1327.4512">cart_items</text><line style="stroke:#181818;stroke-width:0.5;" x1="129" x2="292" y1="1338.2969" y2="1338.2969"/><ellipse cx="139" cy="1350.7813" fill="#000000" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="82" x="147" y="1353.4355">id : UUID [PK]</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="128" x="147" y="1367.4043">** cart_id : UUID [FK]</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="129" x="147" y="1381.373">** dish_id : UUID [FK]</text><line style="stroke:#181818;stroke-width:1.0;" x1="129" x2="292" y1="1388.2031" y2="1388.2031"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="115" x="134" y="1403.3418">quantity : INTEGER</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="133" x="134" y="1417.3105">price : DECIMAL(10,2)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="99" x="134" y="1431.2793">comment : TEXT</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="149" x="134" y="1445.248">created_at : TIMESTAMP</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="153" x="134" y="1459.2168">updated_at : TIMESTAMP</text></g><!--MD5=[3be5470eedd3bd48be103e43c3edae91]
+class NOT--><g id="elem_NOT"><rect codeLine="151" fill="#F1F1F1" height="171.7188" id="NOT" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="162" x="792.5" y="1301.2969"/><ellipse cx="831.25" cy="1316.2969" fill="#ADD1B2" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M833.6875,1320.7969 L828.2344,1320.7969 L828.2344,1312.0469 L833.6875,1312.0469 L833.6875,1313.5781 L829.9688,1313.5781 L829.9688,1315.4531 L833.3281,1315.4531 L833.3281,1316.9844 L829.9688,1316.9844 L829.9688,1319.2656 L833.6875,1319.2656 L833.6875,1320.7969 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="77" x="849.75" y="1320.4512">notifications</text><line style="stroke:#181818;stroke-width:0.5;" x1="793.5" x2="953.5" y1="1331.2969" y2="1331.2969"/><ellipse cx="803.5" cy="1343.7813" fill="#000000" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="82" x="811.5" y="1346.4355">id : UUID [PK]</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="131" x="811.5" y="1360.4043">** user_id : UUID [FK]</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="137" x="811.5" y="1374.373">** order_id : UUID [FK]</text><line style="stroke:#181818;stroke-width:1.0;" x1="793.5" x2="953.5" y1="1381.2031" y2="1381.2031"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="142" x="798.5" y="1396.3418">type : notification_type</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="127" x="798.5" y="1410.3105">title : VARCHAR(255)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="98" x="798.5" y="1424.2793">message : TEXT</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="114" x="798.5" y="1438.248">is_read : BOOLEAN</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="149" x="798.5" y="1452.2168">created_at : TIMESTAMP</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="129" x="798.5" y="1466.1855">read_at : TIMESTAMP</text></g><!--MD5=[ad1ae4e925616c3994fdb8c728fb83e0]
+class EVT--><g id="elem_EVT"><rect codeLine="164" fill="#F1F1F1" height="129.8125" id="EVT" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="183" x="457" y="1033.2969"/><ellipse cx="523.5" cy="1048.2969" fill="#ADD1B2" rx="10" ry="10" style="stroke:#181818;stroke-width:1.0;"/><path d="M525.9375,1052.7969 L520.4844,1052.7969 L520.4844,1044.0469 L525.9375,1044.0469 L525.9375,1045.5781 L522.2188,1045.5781 L522.2188,1047.4531 L525.5781,1047.4531 L525.5781,1048.9844 L522.2188,1048.9844 L522.2188,1051.2656 L525.9375,1051.2656 L525.9375,1052.7969 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="42" x="542.5" y="1052.4512">events</text><line style="stroke:#181818;stroke-width:0.5;" x1="458" x2="639" y1="1063.2969" y2="1063.2969"/><ellipse cx="468" cy="1075.7813" fill="#000000" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="82" x="476" y="1078.4355">id : UUID [PK]</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="151" x="476" y="1092.4043">** session_id : UUID [FK]</text><line style="stroke:#181818;stroke-width:1.0;" x1="458" x2="639" y1="1099.2344" y2="1099.2344"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="171" x="463" y="1114.373">event_type : VARCHAR(100)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="106" x="463" y="1128.3418">properties : JSON</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="147" x="463" y="1142.3105">timestamp : TIMESTAMP</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="163" x="463" y="1156.2793">ip_address : VARCHAR(45)</text></g><!--MD5=[95d087a9a06186a41ed113af1dceb142]
+link RES to MEN--><g id="link_RES_MEN"><path codeLine="175" d="M620.84,180.0169 C564.75,210.9769 491.28,252.4269 427.5,291.2969 C422.82,294.1469 418.06,297.0869 413.27,300.0869 " fill="none" id="RES-MEN" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="413.0068" x2="409.4186" y1="300.2553" y2="309.5894"/><line style="stroke:#181818;stroke-width:1.0;" x1="413.0068" x2="403.0414" y1="300.2553" y2="299.4243"/><line style="stroke:#181818;stroke-width:1.0;" x1="413.0068" x2="406.23" y1="300.2553" y2="304.5069"/><ellipse cx="418.0893" cy="297.0667" fill="none" rx="4" ry="4" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="622.5038" x2="626.3756" y1="174.5424" y2="181.5431"/><line style="stroke:#181818;stroke-width:1.0;" x1="619.8785" x2="623.7503" y1="175.9944" y2="182.995"/><line style="stroke:#181818;stroke-width:1.0;" x1="620.9393" x2="627.94" y1="179.9787" y2="176.1069"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="23" x="498.5" y="258.4355">has</text></g><!--MD5=[9c570a01874acc329b8666e4adbd734d]
+link MEN to CAT--><g id="link_MEN_CAT"><path codeLine="176" d="M294.15,450.3869 C280.97,523.0869 261.41,630.9169 247.45,707.8469 " fill="none" id="MEN-CAT" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="247.3786" x2="251.8536" y1="708.2555" y2="717.1983"/><line style="stroke:#181818;stroke-width:1.0;" x1="247.3786" x2="240.0464" y1="708.2555" y2="715.0554"/><line style="stroke:#181818;stroke-width:1.0;" x1="247.3786" x2="245.95" y1="708.2555" y2="716.1269"/><ellipse cx="248.45" cy="702.3519" fill="none" rx="4" ry="4" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="290.97" x2="298.8414" y1="445.5283" y2="446.9569"/><line style="stroke:#181818;stroke-width:1.0;" x1="290.4343" x2="298.3057" y1="448.4801" y2="449.9086"/><line style="stroke:#181818;stroke-width:1.0;" x1="294.1914" x2="295.62" y1="450.1783" y2="442.3069"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="54" x="289.5" y="583.9355">contains</text></g><!--MD5=[d978da17d59c20c754980f7a88e41cdc]
+link CAT to DIS--><g id="link_CAT_DIS"><path codeLine="177" d="M188.93,895.8969 C179.39,917.1269 169.06,940.1269 158.92,962.7369 " fill="none" id="CAT-DIS" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="158.9135" x2="161.1013" y1="962.7618" y2="972.5195"/><line style="stroke:#181818;stroke-width:1.0;" x1="158.9135" x2="150.1587" y1="962.7618" y2="967.5942"/><line style="stroke:#181818;stroke-width:1.0;" x1="158.9135" x2="155.63" y1="962.7618" y2="970.0569"/><ellipse cx="161.3761" cy="957.2904" fill="none" rx="4" ry="4" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="187.034" x2="194.3344" y1="890.3513" y2="893.6229"/><line style="stroke:#181818;stroke-width:1.0;" x1="185.8071" x2="193.1075" y1="893.0889" y2="896.3606"/><line style="stroke:#181818;stroke-width:1.0;" x1="189.0484" x2="192.32" y1="895.6373" y2="888.3369"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="54" x="173.5" y="937.4355">contains</text></g><!--MD5=[0c081d4bd546bb9ce016a5d669c140bd]
+link RES to TAB--><g id="link_RES_TAB"><path codeLine="178" d="M645.67,223.1369 C631.47,243.2569 616.49,264.4769 602.49,284.3069 " fill="none" id="RES-TAB" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="602.3974" x2="602.6797" y1="284.4539" y2="294.4499"/><line style="stroke:#181818;stroke-width:1.0;" x1="602.3974" x2="592.8803" y1="284.4539" y2="287.5238"/><line style="stroke:#181818;stroke-width:1.0;" x1="602.3974" x2="597.78" y1="284.4539" y2="290.9869"/><ellipse cx="605.8604" cy="279.5542" fill="none" rx="4" ry="4" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="644.7458" x2="651.2835" y1="217.5104" y2="222.1211"/><line style="stroke:#181818;stroke-width:1.0;" x1="643.0168" x2="649.5545" y1="219.962" y2="224.5727"/><line style="stroke:#181818;stroke-width:1.0;" x1="645.7093" x2="650.32" y1="223.0846" y2="216.5469"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="23" x="627.5" y="258.4355">has</text></g><!--MD5=[a7ce2870aa45faffb49debcf417171d7]
+link RES to USR--><g id="link_RES_USR"><path codeLine="179" d="M798.7,211.0469 C808.78,222.3069 818.34,234.1969 826.5,246.2969 C873.33,315.7669 909.24,403.5469 932.81,471.3869 " fill="none" id="RES-USR" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="932.879" x2="941.1614" y1="471.585" y2="477.1886"/><line style="stroke:#181818;stroke-width:1.0;" x1="932.879" x2="929.8186" y1="471.585" y2="481.1051"/><line style="stroke:#181818;stroke-width:1.0;" x1="932.879" x2="935.49" y1="471.585" y2="479.1469"/><ellipse cx="930.9207" cy="465.9135" fill="none" rx="4" ry="4" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="792.7857" x2="798.7007" y1="210.5076" y2="205.1212"/><line style="stroke:#181818;stroke-width:1.0;" x1="794.8056" x2="800.7206" y1="212.7257" y2="207.3393"/><line style="stroke:#181818;stroke-width:1.0;" x1="798.4364" x2="793.05" y1="210.7719" y2="204.8569"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="58" x="834.5" y="258.4355">manages</text></g><!--MD5=[a0d35156fc6cfa64d3e0e06873626e8b]
+link RES to VIS--><g id="link_RES_VIS"><path codeLine="180" d="M699.85,224.7069 C691.36,288.6269 677.55,374.9269 657.5,449.2969 C629.05,554.8169 610.56,577.6169 570.5,679.2969 C567.64,686.5669 564.65,694.0669 561.62,701.5969 " fill="none" id="RES-VIS" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="561.5634" x2="564.1472" y1="701.724" y2="711.3844"/><line style="stroke:#181818;stroke-width:1.0;" x1="561.5634" x2="553.0128" y1="701.724" y2="706.9093"/><line style="stroke:#181818;stroke-width:1.0;" x1="561.5634" x2="558.58" y1="701.724" y2="709.1469"/><ellipse cx="563.801" cy="696.1568" fill="none" rx="4" ry="4" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="696.4125" x2="704.3442" y1="220.0711" y2="221.1143"/><line style="stroke:#181818;stroke-width:1.0;" x1="696.0213" x2="703.953" y1="223.0455" y2="224.0887"/><line style="stroke:#181818;stroke-width:1.0;" x1="699.8567" x2="700.9" y1="224.5586" y2="216.6269"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="35" x="690.5" y="374.9355">hosts</text></g><!--MD5=[ace0c09a2ed37d5159d5d52e3b5872a6]
+link TAB to VIS--><g id="link_TAB_VIS"><path codeLine="181" d="M538.07,457.9569 C534.47,528.1769 529.41,627.2069 525.64,700.8769 " fill="none" id="TAB-VIS" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="525.6245" x2="531.2019" y1="701.2876" y2="709.5877"/><line style="stroke:#181818;stroke-width:1.0;" x1="525.6245" x2="519.2181" y1="701.2876" y2="708.966"/><line style="stroke:#181818;stroke-width:1.0;" x1="525.6245" x2="525.21" y1="701.2876" y2="709.2769"/><ellipse cx="525.9353" cy="695.2957" fill="none" rx="4" ry="4" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="534.2949" x2="542.2849" y1="453.4618" y2="453.862"/><line style="stroke:#181818;stroke-width:1.0;" x1="534.1448" x2="542.1348" y1="456.458" y2="456.8582"/><line style="stroke:#181818;stroke-width:1.0;" x1="538.0898" x2="538.49" y1="457.6569" y2="449.6669"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="23" x="538.5" y="583.9355">has</text></g><!--MD5=[cfa85b5d152701e301da8f9d55d6f9f1]
+link VIS to ORD--><g id="link_VIS_ORD"><path codeLine="182" d="M588.66,901.8569 C599.16,915.1969 610.27,928.3769 621.5,940.2969 C635.78,955.4569 642.44,955.9069 657.5,970.2969 C664.9,977.3669 672.39,984.8169 679.83,992.4269 " fill="none" id="VIS-ORD" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="679.9295" x2="689.8064" y1="992.525" y2="994.089"/><line style="stroke:#181818;stroke-width:1.0;" x1="679.9295" x2="681.1936" y1="992.525" y2="1002.4448"/><line style="stroke:#181818;stroke-width:1.0;" x1="679.9295" x2="685.5" y1="992.525" y2="998.2669"/><ellipse cx="675.7516" cy="988.2185" fill="none" rx="4" ry="4" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="582.8501" x2="589.1634" y1="900.9203" y2="896.0068"/><line style="stroke:#181818;stroke-width:1.0;" x1="584.6927" x2="591.006" y1="903.2877" y2="898.3742"/><line style="stroke:#181818;stroke-width:1.0;" x1="588.4635" x2="583.55" y1="901.6202" y2="895.3069"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="48" x="622.5" y="937.4355">creates</text></g><!--MD5=[1d391611e9abf207f13e35dc004aa1f9]
+link VIS to CAR--><g id="link_VIS_CAR"><path codeLine="183" d="M454.21,902.2269 C425.29,945.3769 392.22,994.7469 366.57,1033.0169 " fill="none" id="VIS-CAR" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="366.3274" x2="366.8524" y1="1033.3937" y2="1043.3799"/><line style="stroke:#181818;stroke-width:1.0;" x1="366.3274" x2="356.8876" y1="1033.3937" y2="1036.6939"/><line style="stroke:#181818;stroke-width:1.0;" x1="366.3274" x2="361.87" y1="1033.3937" y2="1040.0369"/><ellipse cx="369.6704" cy="1028.4113" fill="none" rx="4" ry="4" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="453.1597" x2="459.8029" y1="896.6098" y2="901.0671"/><line style="stroke:#181818;stroke-width:1.0;" x1="451.4882" x2="458.1314" y1="899.101" y2="903.5583"/><line style="stroke:#181818;stroke-width:1.0;" x1="454.2526" x2="458.71" y1="902.1601" y2="895.5169"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="23" x="435.5" y="937.4355">has</text></g><!--MD5=[bdf3e1000a869dde8147b187bee7c515]
+link RES to ORD--><g id="link_RES_ORD"><path codeLine="184" d="M725.59,224.6569 C728.82,246.4869 732,269.6769 734.5,291.2969 C755.89,476.4569 759.74,523.1069 768.5,709.2969 C772.95,803.9269 774.02,911.6769 774.08,989.5669 " fill="none" id="RES-ORD" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="774.08" x2="780.08" y1="989.9669" y2="997.9669"/><line style="stroke:#181818;stroke-width:1.0;" x1="774.08" x2="768.08" y1="989.9669" y2="997.9669"/><line style="stroke:#181818;stroke-width:1.0;" x1="774.08" x2="774.08" y1="989.9669" y2="997.9669"/><ellipse cx="774.08" cy="983.9669" fill="none" rx="4" ry="4" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="721.0368" x2="728.9485" y1="221.2254" y2="220.0401"/><line style="stroke:#181818;stroke-width:1.0;" x1="721.4813" x2="729.393" y1="224.1923" y2="223.0069"/><line style="stroke:#181818;stroke-width:1.0;" x1="725.5853" x2="724.4" y1="224.5886" y2="216.6769"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="52" x="767.5" y="583.9355">receives</text></g><!--MD5=[2f8370c40c5cd6bdd6db74e81e32d6b9]
+link TAB to ORD--><g id="link_TAB_ORD"><path codeLine="185" d="M569.86,457.2769 C612.18,590.2969 693.45,845.7169 739.49,990.4269 " fill="none" id="TAB-ORD" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="739.4991" x2="747.6463" y1="990.4652" y2="996.2637"/><line style="stroke:#181818;stroke-width:1.0;" x1="739.4991" x2="736.2137" y1="990.4652" y2="999.9101"/><line style="stroke:#181818;stroke-width:1.0;" x1="739.4991" x2="741.93" y1="990.4652" y2="998.0869"/><ellipse cx="737.6759" cy="984.7489" fill="none" rx="4" ry="4" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="564.7346" x2="572.3563" y1="454.3632" y2="451.9323"/><line style="stroke:#181818;stroke-width:1.0;" x1="565.6462" x2="573.2679" y1="457.2213" y2="454.7904"/><line style="stroke:#181818;stroke-width:1.0;" x1="569.7609" x2="567.33" y1="456.9586" y2="449.3369"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="52" x="707.5" y="806.9355">receives</text></g><!--MD5=[6494ffaf524b92d3ae605b565a6780ee]
+link ORD to OIT--><g id="link_ORD_OIT"><path codeLine="186" d="M707.04,1205.2669 C685.68,1239.3169 662.42,1276.3969 642.55,1308.0869 " fill="none" id="ORD-OIT" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="642.3413" x2="643.1874" y1="1308.3937" y2="1318.3578"/><line style="stroke:#181818;stroke-width:1.0;" x1="642.3413" x2="633.0126" y1="1308.3937" y2="1311.9959"/><line style="stroke:#181818;stroke-width:1.0;" x1="642.3413" x2="638.1" y1="1308.3937" y2="1315.1769"/><ellipse cx="645.5222" cy="1303.3063" fill="none" rx="4" ry="4" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="705.7847" x2="712.5574" y1="1199.7243" y2="1203.9822"/><line style="stroke:#181818;stroke-width:1.0;" x1="704.1879" x2="710.9606" y1="1202.264" y2="1206.522"/><line style="stroke:#181818;stroke-width:1.0;" x1="707.042" x2="711.3" y1="1205.2396" y2="1198.4669"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="54" x="673.5" y="1268.4355">contains</text></g><!--MD5=[f3a3505dbda7ddf80eface19d0ecd27b]
+link DIS to OIT--><g id="link_DIS_OIT"><path codeLine="187" d="M162.24,1233.1569 C173.14,1247.4469 185.54,1260.6369 199.5,1271.2969 C240.12,1302.2969 261.36,1287.2769 310.5,1301.2969 C375.64,1319.8769 448.87,1341.9069 504.52,1358.8769 " fill="none" id="DIS-OIT" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="504.5973" x2="513.9987" y1="1358.9053" y2="1355.4974"/><line style="stroke:#181818;stroke-width:1.0;" x1="504.5973" x2="510.5013" y1="1358.9053" y2="1366.9764"/><line style="stroke:#181818;stroke-width:1.0;" x1="504.5973" x2="512.25" y1="1358.9053" y2="1361.2369"/><ellipse cx="498.8578" cy="1357.1566" fill="none" rx="4" ry="4" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="156.48" x2="162.9226" y1="1232.0995" y2="1227.3568"/><line style="stroke:#181818;stroke-width:1.0;" x1="158.2585" x2="164.7011" y1="1234.5155" y2="1229.7728"/><line style="stroke:#181818;stroke-width:1.0;" x1="162.0727" x2="157.33" y1="1232.9495" y2="1226.5069"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="71" x="200.5" y="1268.4355">ordered_as</text></g><!--MD5=[17a24ca81363867a6d31e97f83d1ed00]
+link DIS to CIT--><g id="link_DIS_CIT"><path codeLine="188" d="M89.48,1234.3669 C91.53,1247.1069 94.74,1259.6169 99.5,1271.2969 C105.16,1285.1969 113.38,1298.3469 122.83,1310.4569 " fill="none" id="DIS-CIT" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="122.8376" x2="132.5342" y1="1310.4779" y2="1312.9226"/><line style="stroke:#181818;stroke-width:1.0;" x1="122.8376" x2="123.2058" y1="1310.4779" y2="1320.4711"/><line style="stroke:#181818;stroke-width:1.0;" x1="122.8376" x2="127.87" y1="1310.4779" y2="1316.6969"/><ellipse cx="119.0634" cy="1305.8137" fill="none" rx="4" ry="4" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="84.9547" x2="92.8746" y1="1230.9315" y2="1229.8021"/><line style="stroke:#181818;stroke-width:1.0;" x1="85.3783" x2="93.2981" y1="1233.9015" y2="1232.7721"/><line style="stroke:#181818;stroke-width:1.0;" x1="89.4794" x2="88.35" y1="1234.3268" y2="1226.4069"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="61" x="100.5" y="1268.4355">added_as</text></g><!--MD5=[6946594a0ac47967d51469f8ebc95c53]
+link CAR to CIT--><g id="link_CAR_CIT"><path codeLine="189" d="M312.02,1164.6269 C305.05,1197.3969 294.72,1237.2669 280.5,1271.2969 C276.37,1281.1869 271.47,1291.2269 266.21,1301.0469 " fill="none" id="CAR-CIT" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="266.1528" x2="267.5866" y1="1301.1248" y2="1311.0215"/><line style="stroke:#181818;stroke-width:1.0;" x1="266.1528" x2="257.0534" y1="1301.1248" y2="1305.2723"/><line style="stroke:#181818;stroke-width:1.0;" x1="266.1528" x2="262.32" y1="1301.1248" y2="1308.1469"/><ellipse cx="269.0274" cy="1295.8583" fill="none" rx="4" ry="4" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="308.9892" x2="316.8215" y1="1159.5484" y2="1161.1777"/><line style="stroke:#181818;stroke-width:1.0;" x1="308.3782" x2="316.2105" y1="1162.4855" y2="1164.1148"/><line style="stroke:#181818;stroke-width:1.0;" x1="312.0906" x2="313.72" y1="1164.2792" y2="1156.4469"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="54" x="287.5" y="1268.4355">contains</text></g><!--MD5=[e11b63dbf22ad2911aad3a65c88635d4]
+link USR to NOT--><g id="link_USR_NOT"><path codeLine="190" d="M955.17,687.4169 C941.76,823.3769 916.93,1065.0469 890.5,1271.2969 C889.59,1278.4269 888.6,1285.7969 887.57,1293.2069 " fill="none" id="USR-NOT" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="887.5634" x2="892.3916" y1="1293.3247" y2="1302.0819"/><line style="stroke:#181818;stroke-width:1.0;" x1="887.5634" x2="880.5084" y1="1293.3247" y2="1300.4118"/><line style="stroke:#181818;stroke-width:1.0;" x1="887.5634" x2="886.45" y1="1293.3247" y2="1301.2469"/><ellipse cx="888.3984" cy="1287.3831" fill="none" rx="4" ry="4" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="951.5863" x2="959.5476" y1="683.0045" y2="683.7906"/><line style="stroke:#181818;stroke-width:1.0;" x1="951.2915" x2="959.2528" y1="685.9899" y2="686.7761"/><line style="stroke:#181818;stroke-width:1.0;" x1="955.1739" x2="955.96" y1="687.3782" y2="679.4169"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="52" x="930.5" y="937.4355">receives</text></g><!--MD5=[caebc5109cfc3b2c799a3768fe95d3df]
+link ORD to NOT--><g id="link_ORD_NOT"><path codeLine="191" d="M810.8,1206.3469 C820.75,1234.8969 831.41,1265.5169 841.08,1293.2469 " fill="none" id="ORD-NOT" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="841.1418" x2="849.437" y1="1293.4309" y2="1299.0158"/><line style="stroke:#181818;stroke-width:1.0;" x1="841.1418" x2="838.103" y1="1293.4309" y2="1302.958"/><line style="stroke:#181818;stroke-width:1.0;" x1="841.1418" x2="843.77" y1="1293.4309" y2="1300.9869"/><ellipse cx="839.1707" cy="1287.7639" fill="none" rx="4" ry="4" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="805.5947" x2="813.1462" y1="1203.5631" y2="1200.9222"/><line style="stroke:#181818;stroke-width:1.0;" x1="806.585" x2="814.1366" y1="1206.3949" y2="1203.754"/><line style="stroke:#181818;stroke-width:1.0;" x1="810.6909" x2="808.05" y1="1206.0184" y2="1198.4669"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="49" x="832.5" y="1268.4355">triggers</text></g><!--MD5=[310be625d5a776738c5d3da16e4fdd0a]
+link VIS to EVT--><g id="link_VIS_EVT"><path codeLine="192" d="M515.17,903.5369 C514.9,910.8969 514.67,918.2169 514.5,925.2969 C514.34,931.9569 513.79,933.6669 514.5,940.2969 C517.5,968.3169 523.43,998.6769 529.51,1025.1669 " fill="none" id="VIS-EVT" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="529.5744" x2="537.2334" y1="1025.4656" y2="1031.8952"/><line style="stroke:#181818;stroke-width:1.0;" x1="529.5744" x2="525.5466" y1="1025.4656" y2="1034.6186"/><line style="stroke:#181818;stroke-width:1.0;" x1="529.5744" x2="531.39" y1="1025.4656" y2="1033.2569"/><ellipse cx="528.2127" cy="1019.6222" fill="none" rx="4" ry="4" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="511.3327" x2="519.327" y1="899.3839" y2="899.6842"/><line style="stroke:#181818;stroke-width:1.0;" x1="511.22" x2="519.2144" y1="902.3818" y2="902.6821"/><line style="stroke:#181818;stroke-width:1.0;" x1="515.1797" x2="515.48" y1="903.5312" y2="895.5369"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="65" x="515.5" y="937.4355">generates</text></g><!--MD5=[ef2b91d778f5e083a6acd891a1579901]
+@startuml
+skinparam shadowing false
+skinparam backgroundColor white
+skinparam DefaultFontSize 12
+
+title ERD - Passione Database
+
+entity "restaurants" as RES {
+  * id : UUID [PK]
+  - -
+  name : VARCHAR(255)
+  address : TEXT
+  phone : VARCHAR(20)
+  email : VARCHAR(255)
+  qr_code : VARCHAR(100)
+  is_active : BOOLEAN
+  created_at : TIMESTAMP
+  updated_at : TIMESTAMP
+}
+
+entity "menus" as MEN {
+  * id : UUID [PK]
+  ** restaurant_id : UUID [FK]
+  - -
+  name : VARCHAR(255)
+  description : TEXT
+  is_active : BOOLEAN
+  created_at : TIMESTAMP
+  updated_at : TIMESTAMP
+}
+
+entity "categories" as CAT {
+  * id : UUID [PK]
+  ** menu_id : UUID [FK]
+  - -
+  name : VARCHAR(255)
+  name_en : VARCHAR(255)
+  description : TEXT
+  sort_order : INTEGER
+  is_active : BOOLEAN
+  created_at : TIMESTAMP
+  updated_at : TIMESTAMP
+}
+
+entity "dishes" as DIS {
+  * id : UUID [PK]
+  ** category_id : UUID [FK]
+  - -
+  name : VARCHAR(255)
+  name_en : VARCHAR(255)
+  description : TEXT
+  description_en : TEXT
+  price : DECIMAL(10,2)
+  image_url : VARCHAR(500)
+  is_available : BOOLEAN
+  allergens : JSON
+  is_vegetarian : BOOLEAN
+  is_vegan : BOOLEAN
+  preparation_time : INTEGER
+  created_at : TIMESTAMP
+  updated_at : TIMESTAMP
+}
+
+entity "tables" as TAB {
+  * id : UUID [PK]
+  ** restaurant_id : UUID [FK]
+  - -
+  table_number : VARCHAR(10)
+  qr_code : VARCHAR(100)
+  capacity : INTEGER
+  is_active : BOOLEAN
+  created_at : TIMESTAMP
+  updated_at : TIMESTAMP
+}
+
+entity "users" as USR {
+  * id : UUID [PK]
+  ** restaurant_id : UUID [FK]
+  - -
+  name : VARCHAR(255)
+  email : VARCHAR(255)
+  phone : VARCHAR(20)
+  password_hash : VARCHAR(255)
+  role : user_role
+  is_active : BOOLEAN
+  created_at : TIMESTAMP
+  updated_at : TIMESTAMP
+  last_login : TIMESTAMP
+}
+
+entity "visitor_sessions" as VIS {
+  * id : UUID [PK]
+  ** table_id : UUID [FK]
+  ** restaurant_id : UUID [FK]
+  - -
+  session_token : VARCHAR(255)
+  language : VARCHAR(2)
+  device_id : VARCHAR(255)
+  expires_at : TIMESTAMP
+  is_active : BOOLEAN
+  created_at : TIMESTAMP
+  updated_at : TIMESTAMP
+}
+
+entity "orders" as ORD {
+  * id : UUID [PK]
+  ** restaurant_id : UUID [FK]
+  ** table_id : UUID [FK]
+  ** session_id : UUID [FK]
+  - -
+  table_number : VARCHAR(10)
+  status : order_status
+  total_amount : DECIMAL(10,2)
+  comment : TEXT
+  created_at : TIMESTAMP
+  updated_at : TIMESTAMP
+  completed_at : TIMESTAMP
+}
+
+entity "order_items" as OIT {
+  * id : UUID [PK]
+  ** order_id : UUID [FK]
+  ** dish_id : UUID [FK]
+  - -
+  quantity : INTEGER
+  price : DECIMAL(10,2)
+  comment : TEXT
+  created_at : TIMESTAMP
+}
+
+entity "carts" as CAR {
+  * id : UUID [PK]
+  ** session_id : UUID [FK]
+  - -
+  total_amount : DECIMAL(10,2)
+  created_at : TIMESTAMP
+  updated_at : TIMESTAMP
+}
+
+entity "cart_items" as CIT {
+  * id : UUID [PK]
+  ** cart_id : UUID [FK]
+  ** dish_id : UUID [FK]
+  - -
+  quantity : INTEGER
+  price : DECIMAL(10,2)
+  comment : TEXT
+  created_at : TIMESTAMP
+  updated_at : TIMESTAMP
+}
+
+entity "notifications" as NOT {
+  * id : UUID [PK]
+  ** user_id : UUID [FK]
+  ** order_id : UUID [FK]
+  - -
+  type : notification_type
+  title : VARCHAR(255)
+  message : TEXT
+  is_read : BOOLEAN
+  created_at : TIMESTAMP
+  read_at : TIMESTAMP
+}
+
+entity "events" as EVT {
+  * id : UUID [PK]
+  ** session_id : UUID [FK]
+  - -
+  event_type : VARCHAR(100)
+  properties : JSON
+  timestamp : TIMESTAMP
+  ip_address : VARCHAR(45)
+}
+
+' Relationships
+RES ||- -o{ MEN : "has"
+MEN ||- -o{ CAT : "contains"
+CAT ||- -o{ DIS : "contains"
+RES ||- -o{ TAB : "has"
+RES ||- -o{ USR : "manages"
+RES ||- -o{ VIS : "hosts"
+TAB ||- -o{ VIS : "has"
+VIS ||- -o{ ORD : "creates"
+VIS ||- -o{ CAR : "has"
+RES ||- -o{ ORD : "receives"
+TAB ||- -o{ ORD : "receives"
+ORD ||- -o{ OIT : "contains"
+DIS ||- -o{ OIT : "ordered_as"
+DIS ||- -o{ CIT : "added_as"
+CAR ||- -o{ CIT : "contains"
+USR ||- -o{ NOT : "receives"
+ORD ||- -o{ NOT : "triggers"
+VIS ||- -o{ EVT : "generates"
+@enduml
+
+@startuml
+skinparam shadowing false
+skinparam backgroundColor white
+skinparam DefaultFontSize 12
+
+title ERD - Passione Database
+
+entity "restaurants" as RES {
+  * id : UUID [PK]
+  - -
+  name : VARCHAR(255)
+  address : TEXT
+  phone : VARCHAR(20)
+  email : VARCHAR(255)
+  qr_code : VARCHAR(100)
+  is_active : BOOLEAN
+  created_at : TIMESTAMP
+  updated_at : TIMESTAMP
+}
+
+entity "menus" as MEN {
+  * id : UUID [PK]
+  ** restaurant_id : UUID [FK]
+  - -
+  name : VARCHAR(255)
+  description : TEXT
+  is_active : BOOLEAN
+  created_at : TIMESTAMP
+  updated_at : TIMESTAMP
+}
+
+entity "categories" as CAT {
+  * id : UUID [PK]
+  ** menu_id : UUID [FK]
+  - -
+  name : VARCHAR(255)
+  name_en : VARCHAR(255)
+  description : TEXT
+  sort_order : INTEGER
+  is_active : BOOLEAN
+  created_at : TIMESTAMP
+  updated_at : TIMESTAMP
+}
+
+entity "dishes" as DIS {
+  * id : UUID [PK]
+  ** category_id : UUID [FK]
+  - -
+  name : VARCHAR(255)
+  name_en : VARCHAR(255)
+  description : TEXT
+  description_en : TEXT
+  price : DECIMAL(10,2)
+  image_url : VARCHAR(500)
+  is_available : BOOLEAN
+  allergens : JSON
+  is_vegetarian : BOOLEAN
+  is_vegan : BOOLEAN
+  preparation_time : INTEGER
+  created_at : TIMESTAMP
+  updated_at : TIMESTAMP
+}
+
+entity "tables" as TAB {
+  * id : UUID [PK]
+  ** restaurant_id : UUID [FK]
+  - -
+  table_number : VARCHAR(10)
+  qr_code : VARCHAR(100)
+  capacity : INTEGER
+  is_active : BOOLEAN
+  created_at : TIMESTAMP
+  updated_at : TIMESTAMP
+}
+
+entity "users" as USR {
+  * id : UUID [PK]
+  ** restaurant_id : UUID [FK]
+  - -
+  name : VARCHAR(255)
+  email : VARCHAR(255)
+  phone : VARCHAR(20)
+  password_hash : VARCHAR(255)
+  role : user_role
+  is_active : BOOLEAN
+  created_at : TIMESTAMP
+  updated_at : TIMESTAMP
+  last_login : TIMESTAMP
+}
+
+entity "visitor_sessions" as VIS {
+  * id : UUID [PK]
+  ** table_id : UUID [FK]
+  ** restaurant_id : UUID [FK]
+  - -
+  session_token : VARCHAR(255)
+  language : VARCHAR(2)
+  device_id : VARCHAR(255)
+  expires_at : TIMESTAMP
+  is_active : BOOLEAN
+  created_at : TIMESTAMP
+  updated_at : TIMESTAMP
+}
+
+entity "orders" as ORD {
+  * id : UUID [PK]
+  ** restaurant_id : UUID [FK]
+  ** table_id : UUID [FK]
+  ** session_id : UUID [FK]
+  - -
+  table_number : VARCHAR(10)
+  status : order_status
+  total_amount : DECIMAL(10,2)
+  comment : TEXT
+  created_at : TIMESTAMP
+  updated_at : TIMESTAMP
+  completed_at : TIMESTAMP
+}
+
+entity "order_items" as OIT {
+  * id : UUID [PK]
+  ** order_id : UUID [FK]
+  ** dish_id : UUID [FK]
+  - -
+  quantity : INTEGER
+  price : DECIMAL(10,2)
+  comment : TEXT
+  created_at : TIMESTAMP
+}
+
+entity "carts" as CAR {
+  * id : UUID [PK]
+  ** session_id : UUID [FK]
+  - -
+  total_amount : DECIMAL(10,2)
+  created_at : TIMESTAMP
+  updated_at : TIMESTAMP
+}
+
+entity "cart_items" as CIT {
+  * id : UUID [PK]
+  ** cart_id : UUID [FK]
+  ** dish_id : UUID [FK]
+  - -
+  quantity : INTEGER
+  price : DECIMAL(10,2)
+  comment : TEXT
+  created_at : TIMESTAMP
+  updated_at : TIMESTAMP
+}
+
+entity "notifications" as NOT {
+  * id : UUID [PK]
+  ** user_id : UUID [FK]
+  ** order_id : UUID [FK]
+  - -
+  type : notification_type
+  title : VARCHAR(255)
+  message : TEXT
+  is_read : BOOLEAN
+  created_at : TIMESTAMP
+  read_at : TIMESTAMP
+}
+
+entity "events" as EVT {
+  * id : UUID [PK]
+  ** session_id : UUID [FK]
+  - -
+  event_type : VARCHAR(100)
+  properties : JSON
+  timestamp : TIMESTAMP
+  ip_address : VARCHAR(45)
+}
+
+RES ||- -o{ MEN : "has"
+MEN ||- -o{ CAT : "contains"
+CAT ||- -o{ DIS : "contains"
+RES ||- -o{ TAB : "has"
+RES ||- -o{ USR : "manages"
+RES ||- -o{ VIS : "hosts"
+TAB ||- -o{ VIS : "has"
+VIS ||- -o{ ORD : "creates"
+VIS ||- -o{ CAR : "has"
+RES ||- -o{ ORD : "receives"
+TAB ||- -o{ ORD : "receives"
+ORD ||- -o{ OIT : "contains"
+DIS ||- -o{ OIT : "ordered_as"
+DIS ||- -o{ CIT : "added_as"
+CAR ||- -o{ CIT : "contains"
+USR ||- -o{ NOT : "receives"
+ORD ||- -o{ NOT : "triggers"
+VIS ||- -o{ EVT : "generates"
+@enduml
+
+PlantUML version 1.2022.7(Mon Aug 22 17:01:30 UTC 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>
